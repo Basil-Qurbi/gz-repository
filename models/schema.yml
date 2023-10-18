@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: sales
+    description: "This model represents the sales data including orders, products, quantities, turnover, purchase cost, and margins."
+
+    tests:
+      - unique:
+          column_name: "(orders_id || '-' || products_id)"
+
+    columns:
+      - name: orders_id
+        description: "The unique identifier for each order placed."
+
+        tests:
+          - not_null
+
+      - name: products_id
+        description: "The unique identifier for each product sold."
+
+        tests:
+          - not_null
+
+      - name: qty
+        description: "The quantity of products sold in each transaction."
+
+      - name: turnover
+        description: "The total revenue generated from each transaction."
+
+        tests:
+          - not_null
+
+      - name: purchase_cost
+        description: "The cost of purchasing the product from the supplier."
+
+        tests:
+          - not_null
+
+      - name: margin
+        description: "The profit margin for each transaction, calculated as the difference between the turnover and the purchase cost."
